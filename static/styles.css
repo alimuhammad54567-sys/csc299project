@@ -1,0 +1,35 @@
+:root{
+  --bg:#0f1720; --panel:#0b1220; --muted:#9aa4b2; --accent:#00b4d8; --visited:#2b9348;
+}
+html,body,#app{height:100%;}
+#app{display:flex;}
+aside#sidebar{width:360px; max-width:40vw; padding:20px; background:linear-gradient(180deg,var(--panel), #07101a); color:#e6eef6; box-shadow:2px 0 20px rgba(2,6,23,0.6); overflow:auto}
+aside h1{margin:0 0 6px;font-size:20px}
+.lead{color:var(--muted);margin-bottom:12px}
+#map-container{flex:1; position:relative}
+#map{position:absolute; inset:0}
+#status div{margin-bottom:6px}
+#controls{margin:10px 0}
+#controls button{margin-right:8px;padding:8px 12px;border-radius:8px;border:0;background:var(--accent);color:#052029;cursor:pointer}
+#park-list{list-style:none;padding:0;margin:8px 0}
+#park-list li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.park-row{display:flex;align-items:center;justify-content:space-between}
+.park-info .muted{color:var(--muted);font-size:12px}
+.park-actions button{padding:6px 10px;border-radius:8px;border:0;background:#122; color:#bff; cursor:pointer}
+.marker{width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,0.9);box-shadow:0 0 6px rgba(0,0,0,0.6);border:2px solid #0b1220}
+.marker.visited{background:var(--visited)}
+footer{margin-top:20px;color:var(--muted);font-size:12px}
+
+@media (max-width:900px){
+  aside#sidebar{position:absolute;z-index:3;left:8px;top:8px;width:320px;opacity:0.98}
+}
+
+/* Modal styles */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:50}
+.modal.hidden{display:none}
+.modal-content{background:linear-gradient(180deg,#07101a,#051018);border-radius:12px;padding:18px;max-width:920px;width:92%;color:#e6eef6;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.modal-close{position:absolute;right:22px;top:18px;background:transparent;border:0;color:#cfe; font-size:22px;cursor:pointer}
+#modal-gallery{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.modal-img{width:150px;height:100px;object-fit:cover;border-radius:8px}
+.muted{color:var(--muted)}
+

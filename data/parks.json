@@ -1,0 +1,22 @@
+[
+  {"id": "yellowstone", "name": "Yellowstone National Park", "state": "WY, MT, ID", "lat": 44.4280, "lon": -110.5885},
+  {"id": "yosemite", "name": "Yosemite National Park", "state": "CA", "lat": 37.8651, "lon": -119.5383},
+  {"id": "grand_canyon", "name": "Grand Canyon National Park", "state": "AZ", "lat": 36.1069, "lon": -112.1129},
+  {"id": "zion", "name": "Zion National Park", "state": "UT", "lat": 37.2982, "lon": -113.0263},
+  {"id": "glacier", "name": "Glacier National Park", "state": "MT", "lat": 48.7596, "lon": -113.7870},
+  {"id": "everglades", "name": "Everglades National Park", "state": "FL", "lat": 25.2866, "lon": -80.8987},
+  {"id": "rocky_mountain", "name": "Rocky Mountain National Park", "state": "CO", "lat": 40.3428, "lon": -105.6836},
+  {"id": "grand_teton", "name": "Grand Teton National Park", "state": "WY", "lat": 43.7904, "lon": -110.6818},
+  {"id": "acadia", "name": "Acadia National Park", "state": "ME", "lat": 44.3386, "lon": -68.2733},
+  {"id": "denali", "name": "Denali National Park and Preserve", "state": "AK", "lat": 63.1148, "lon": -151.1926},
+  {"id": "olympic", "name": "Olympic National Park", "state": "WA", "lat": 47.8021, "lon": -123.6044},
+  {"id": "joshua_tree", "name": "Joshua Tree National Park", "state": "CA", "lat": 33.8734, "lon": -115.9010},
+  {"id": "sequoia", "name": "Sequoia National Park", "state": "CA", "lat": 36.4864, "lon": -118.5658},
+  {"id": "kings_canyon", "name": "Kings Canyon National Park", "state": "CA", "lat": 36.8879, "lon": -118.5551},
+  {"id": "arches", "name": "Arches National Park", "state": "UT", "lat": 38.7331, "lon": -109.5925},
+  {"id": "bryce", "name": "Bryce Canyon National Park", "state": "UT", "lat": 37.5930, "lon": -112.1871},
+  {"id": "badlands", "name": "Badlands National Park", "state": "SD", "lat": 43.8554, "lon": -102.3397},
+  {"id": "cuyahoga", "name": "Cuyahoga Valley National Park", "state": "OH", "lat": 41.2808, "lon": -81.5678},
+  {"id": "petrified_forest", "name": "Petrified Forest National Park", "state": "AZ", "lat": 34.9080, "lon": -109.8068},
+  {"id": "great_smoky", "name": "Great Smoky Mountains National Park", "state": "TN, NC", "lat": 35.6118, "lon": -83.4895}
+]

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>US National Park Tracker</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+      /* small inline fallback */
+      body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <aside id="sidebar">
+        <h1>National Park Tracker</h1>
+        <p class="lead">Mark parks you've visited, find the nearest park, and explore a 3D satellite map with terrain.</p>
+
+        <div id="status">
+          <div><strong>Your location:</strong> <span id="your-location">unknown</span></div>
+          <div><strong>Nearest park:</strong> <span id="nearest-park">—</span></div>
+          <div><strong>Nearest unvisited:</strong> <span id="nearest-unvisited">—</span></div>
+        </div>
+
+        <div id="controls">
+          <button id="locate-btn">Use my location</button>
+          <button id="reset-visited">Reset visited</button>
+        </div>
+
+        <h2>All parks</h2>
+        <ul id="park-list"></ul>
+
+        <footer>
+          <small>Map powered by Mapbox (requires MAPBOX token). Set env var MAPBOX_TOKEN before running.</small>
+        </footer>
+      </aside>
+
+      <main id="map-container">
+        <div id="map"></div>
+      </main>
+    </div>
+
+    <!-- Park details modal -->
+    <div id="park-modal" class="modal hidden">
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close">×</button>
+        <div id="modal-body">
+          <h2 id="modal-title"></h2>
+          <div id="modal-gallery"></div>
+          <div id="modal-info"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Pass token from server-side
+      window.MAPBOX_TOKEN = "{{ MAPBOX_TOKEN }}";
+    </script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
