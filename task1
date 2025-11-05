@@ -1,0 +1,79 @@
+import json
+import os
+from datetime import datetime
+
+TASKS_FILE = "tasks.json"
+
+def load_tasks():
+    if os.path.exists(TASKS_FILE):
+        with open(TASKS_FILE, 'r') as f:
+            return json.load(f)
+    return []
+
+def save_tasks(tasks):
+    with open(TASKS_FILE, 'w') as f:
+        json.dump(tasks, f, indent=2)
+
+def add_task(title, due_date):
+    tasks = load_tasks()
+    task = {
+        "id": len(tasks) + 1,
+        "title": title,
+        "due_date": due_date,
+        "done": False,
+        "created": datetime.now().isoformat()
+    }
+    tasks.append(task)
+    save_tasks(tasks)
+    print(f"✅ Task added: {title}")
+
+def list_tasks():
+    tasks = load_tasks()
+    if not tasks:
+        print("No tasks found.")
+        return
+    
+    print("\n📋 All Tasks:")
+    for task in tasks:
+        status = "✓" if task["done"] else "○"
+        print(f"  {status} [{task['id']}] {task['title']} (Due: {task['due_date']})")
+
+def search_tasks(query):
+    tasks = load_tasks()
+    results = [t for t in tasks if query.lower() in t["title"].lower()]
+    
+    if not results:
+        print(f"No tasks found matching '{query}'")
+        return
+    
+    print(f"\n🔍 Search results for '{query}':")
+    for task in results:
+        status = "✓" if task["done"] else "○"
+        print(f"  {status} [{task['id']}] {task['title']} (Due: {task['due_date']})")
+
+def main():
+    print("=" * 50)
+    print("  Simple Task Manager (tasks1 prototype)")
+    print("=" * 50)
+    
+    while True:
+        print("\nCommands: add | list | search | quit")
+        cmd = input("> ").strip().lower()
+        
+        if cmd == "quit":
+            break
+        elif cmd == "list":
+            list_tasks()
+        elif cmd.startswith("add"):
+            title = input("Task title: ")
+            due_date = input("Due date (YYYY-MM-DD): ")
+            add_task(title, due_date)
+        elif cmd.startswith("search"):
+            query = input("Search query: ")
+            search_tasks(query)
+        else:
+            print("Unknown command. Try: add, list, search, or quit")
+
+if __name__ == "__main__":
+    main()
+    
