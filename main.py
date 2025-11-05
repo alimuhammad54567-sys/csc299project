@@ -110,8 +110,8 @@ def api_chat():
 		return jsonify({'response': 'Please ask a question about national parks!'})
 
 	try:
-		openai.api_key = openai_key
-		response = openai.ChatCompletion.create(
+		client = openai.OpenAI(api_key=openai_key)
+		response = client.chat.completions.create(
 			model="gpt-3.5-turbo",
 			messages=[
 				{"role": "system", "content": "You are a helpful AI assistant for a US National Parks tracker website. Answer questions about national parks, provide facts, and help users plan visits. Keep responses concise and friendly."},
@@ -119,7 +119,7 @@ def api_chat():
 			],
 			max_tokens=200
 		)
-		ai_response = response.choices[0].message['content'].strip()
+		ai_response = response.choices[0].message.content.strip()
 		return jsonify({'response': ai_response})
 	except Exception as e:
 		return jsonify({'error': str(e)}), 500
