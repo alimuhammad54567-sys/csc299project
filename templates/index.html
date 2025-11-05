@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>US National Park Tracker</title>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/static/styles.css">
+  <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css">
     <style>
       /* small inline fallback */
       body { margin:0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
@@ -53,11 +53,8 @@
       </div>
     </div>
 
-    <script>
-      // Pass token from server-side
-      window.MAPBOX_TOKEN = "{{ MAPBOX_TOKEN }}";
-    </script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <!-- Using MapLibre (open-source). No Mapbox token needed. -->
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
     <script src="/static/app.js"></script>
   </body>
 </html>

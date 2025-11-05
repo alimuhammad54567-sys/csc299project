@@ -1,13 +1,23 @@
-// Minimal frontend for National Park Tracker
-if (!window.MAPBOX_TOKEN) {
-  console.warn('MAPBOX_TOKEN is not set. The map may not load until you set the environment variable.');
-}
+// Minimal frontend for National Park Tracker using MapLibre (open-source)
+// We use Esri World Imagery raster tiles for satellite imagery (no API key required).
 
-mapboxgl.accessToken = window.MAPBOX_TOKEN || '';
+const style = {
+  version: 8,
+  sources: {
+    'esri': {
+      type: 'raster',
+      tiles: ['https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],
+      tileSize: 256
+    }
+  },
+  layers: [
+    { id: 'esri', type: 'raster', source: 'esri' }
+  ]
+};
 
-const map = new mapboxgl.Map({
+const map = new maplibregl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/satellite-v9',
+  style: style,
   center: [-98.5795, 39.8283], // center of USA
   zoom: 3.5,
   pitch: 45,
@@ -16,26 +26,9 @@ const map = new mapboxgl.Map({
 });
 
 map.on('load', () => {
-  // Add DEM source for terrain (Mapbox's public terrain tiles)
-  if (mapboxgl.accessToken) {
-    map.addSource('mapbox-dem', {
-      'type': 'raster-dem',
-      'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-      'tileSize': 512,
-      'maxzoom': 14
-    });
-    map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.0 });
-    // add a sky layer for nicer 3D effect
-    map.addLayer({
-      'id': 'sky',
-      'type': 'sky',
-      'paint': {
-        'sky-type': 'atmosphere',
-        'sky-atmosphere-sun': [0.0, 0.0],
-        'sky-atmosphere-sun-intensity': 15
-      }
-    });
-  }
+  // MapLibre doesn't provide Mapbox DEM tiles for free; true terrain/exaggeration
+  // needs separate DEM tiles which often require an API key. For now we keep a pitched
+  // satellite view and add stylized park/tree markers.
 
   fetch('/api/parks').then(r => r.json()).then(parks => {
     window.PARKS = parks;
@@ -66,9 +59,9 @@ function renderParks(parks){
     el.className = 'marker';
     if (visited.includes(park.id)) el.classList.add('visited');
 
-    const marker = new mapboxgl.Marker({element: el})
+    const marker = new maplibregl.Marker({element: el})
       .setLngLat([park.lon, park.lat])
-      .setPopup(new mapboxgl.Popup({offset:25}).setHTML(`<strong>${park.name}</strong><div>${park.state}</div>`))
+      .setPopup(new maplibregl.Popup({offset:25}).setHTML(`<strong>${park.name}</strong><div>${park.state}</div>`))
       .addTo(map);
 
   // list item
@@ -78,8 +71,8 @@ function renderParks(parks){
   });
 
   // add tree-like visual layer: small green circles at park locations
-  if (map.getSource('parks-points')) map.removeLayer('parks-points');
-  if (map.getSource('parks-points')) map.removeSource('parks-points');
+  if (map.getLayer && map.getLayer('parks-points')) map.removeLayer('parks-points');
+  if (map.getSource && map.getSource('parks-points')) map.removeSource('parks-points');
 
   const features = parks.map(p => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [p.lon, p.lat] }, properties: { id: p.id } }));
   map.addSource('parks-points', { type: 'geojson', data: { type: 'FeatureCollection', features } });
@@ -92,7 +85,7 @@ function renderParks(parks){
       'circle-radius': 6,
       'circle-opacity': 0.9,
       'circle-stroke-width': 1,
-      'circle-stroke-color': '#143;'
+      'circle-stroke-color': '#072'
     }
   });
 
@@ -190,7 +183,7 @@ function calcNearest(lat, lon){
 
   // highlight nearest on the map with a popup and camera
   if (nearest){
-    new mapboxgl.Popup({closeOnClick:false})
+    new maplibregl.Popup({closeOnClick:false})
       .setLngLat([nearest.lon, nearest.lat])
       .setHTML(`<strong>${nearest.name}</strong><div>${nearest.state}</div><div>${nearestDist.toFixed(1)} km away</div>`)
       .addTo(map);

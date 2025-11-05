@@ -1,11 +1,11 @@
 # US National Park Tracker
 
-This is a small web app to track which US National Parks you've visited, find the nearest park to your current location, and show a modern 3D satellite map with terrain. It uses Mapbox GL JS for the map (requires a Mapbox access token).
+This is a small web app to track which US National Parks you've visited, find the nearest park to your current location, and explore a modern satellite map. The frontend uses MapLibre (open-source) with Esri World Imagery as the basemap (no Mapbox token required).
 
 Features
 - Mark parks as visited/unvisited (stored in your browser localStorage).
 - Use your device location to find the nearest park and the nearest unvisited park.
-- 3D satellite map with terrain exaggeration and sky for a modern look.
+- 3D-like pitched satellite view for a modern look.
 
 Quick start (Windows PowerShell)
 
@@ -15,10 +15,10 @@ Quick start (Windows PowerShell)
 python -m venv .venv; .\.venv\Scripts\Activate.ps1; pip install -r requirements.txt
 ```
 
-2. Get a Mapbox access token (https://www.mapbox.com/) and set it in your environment:
+2. (Optional) If you want richer park details from the National Park Service, set the NPS API key in your environment:
 
 ```powershell
-$env:MAPBOX_TOKEN = 'pk.your_mapbox_token_here'
+$env:NPS_API_KEY  = 'WALq8zo8uIz6e7uCk4yxyuFCKqCdfH137ShBwICg'
 ```
 
 3. Run the app:
@@ -31,7 +31,7 @@ python main.py
 
 Notes and limitations
 - The project ships a small curated list of major national parks in `data/parks.json`. You can expand this dataset as needed.
-- Mapbox is used for satellite tiles and DEM for terrain. You must provide a token. If you prefer open-source tile providers, the frontend can be adapted to MapLibre and different tile sources.
+- The app uses MapLibre GL JS with Esri World Imagery tiles for satellite imagery (no Mapbox token required). True terrain/exaggeration (DEM) usually requires separate elevation tile sources that may need API keys; for a free setup we provide a pitched 3D-like satellite view and stylized park/tree markers.
 - The "trees" are represented as green points at park locations for a stylized visual—full tree coverage mapping would require additional datasets and more advanced styling.
 
 Next steps (suggestions)

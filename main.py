@@ -16,9 +16,8 @@ def load_parks():
 
 @app.route('/')
 def index():
-	mapbox_token = os.environ.get('MAPBOX_TOKEN', '')
 	parks = load_parks()
-	return render_template('index.html', MAPBOX_TOKEN=mapbox_token, parks=parks)
+	return render_template('index.html', parks=parks)
 
 
 @app.route('/api/parks')
