@@ -243,3 +243,51 @@ function showParkDetails(id){
 
 // initial call
 updateNearestInfo();
+
+// Chat functionality
+document.getElementById('chat-btn').addEventListener('click', () => {
+  document.getElementById('chat-modal').classList.remove('hidden');
+});
+
+document.getElementById('chat-close').addEventListener('click', () => {
+  document.getElementById('chat-modal').classList.add('hidden');
+});
+
+document.getElementById('chat-send').addEventListener('click', sendChatMessage);
+document.getElementById('chat-input').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendChatMessage();
+});
+
+function sendChatMessage() {
+  const input = document.getElementById('chat-input');
+  const message = input.value.trim();
+  if (!message) return;
+
+  addChatMessage('You', message);
+  input.value = '';
+
+  fetch('/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message })
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.response) {
+      addChatMessage('AI Assistant', data.response);
+    } else if (data.error) {
+      addChatMessage('AI Assistant', 'Error: ' + data.error);
+    }
+  })
+  .catch(err => {
+    addChatMessage('AI Assistant', 'Failed to get response: ' + err.message);
+  });
+}
+
+function addChatMessage(sender, text) {
+  const messages = document.getElementById('chat-messages');
+  const msgDiv = document.createElement('div');
+  msgDiv.innerHTML = `<strong>${sender}:</strong> ${text}`;
+  messages.appendChild(msgDiv);
+  messages.scrollTop = messages.scrollHeight;
+}

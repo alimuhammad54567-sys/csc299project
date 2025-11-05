@@ -1,8 +1,9 @@
-from flask import Flask, render_template, jsonify, send_from_directory
+from flask import Flask, render_template, jsonify, send_from_directory, request
 import os
 import json
 import requests
 from urllib.parse import urlencode
+import openai
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
@@ -94,6 +95,34 @@ def api_park_detail(park_id):
 		return jsonify(result)
 	except requests.RequestException as e:
 		return jsonify({'error': 'failed to fetch NPS data', 'detail': str(e)}), 502
+
+
+@app.route('/api/chat', methods=['POST'])
+def api_chat():
+	"""Handle chat messages with AI assistant for park questions."""
+	openai_key = os.environ.get('OPENAI_API_KEY')
+	if not openai_key:
+		return jsonify({'error': 'AI not configured. Set OPENAI_API_KEY environment variable.'}), 500
+
+	data = request.get_json()
+	user_message = data.get('message', '')
+	if not user_message:
+		return jsonify({'response': 'Please ask a question about national parks!'})
+
+	try:
+		openai.api_key = openai_key
+		response = openai.ChatCompletion.create(
+			model="gpt-3.5-turbo",
+			messages=[
+				{"role": "system", "content": "You are a helpful AI assistant for a US National Parks tracker website. Answer questions about national parks, provide facts, and help users plan visits. Keep responses concise and friendly."},
+				{"role": "user", "content": user_message}
+			],
+			max_tokens=200
+		)
+		ai_response = response.choices[0].message['content'].strip()
+		return jsonify({'response': ai_response})
+	except Exception as e:
+		return jsonify({'error': str(e)}), 500
 
 
 if __name__ == '__main__':

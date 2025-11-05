@@ -24,8 +24,9 @@
         </div>
 
         <div id="controls">
-          <button id="locate-btn">Use my location</button>
-          <button id="reset-visited">Reset visited</button>
+        <button id="locate-btn">Use my location</button>
+        <button id="reset-visited">Reset visited</button>
+          <button id="chat-btn">Ask AI Assistant</button>
         </div>
 
         <h2>All parks</h2>
@@ -43,13 +44,24 @@
 
     <!-- Park details modal -->
     <div id="park-modal" class="modal hidden">
+    <div class="modal-content">
+    <button id="modal-close" class="modal-close">×</button>
+    <div id="modal-body">
+    <h2 id="modal-title"></h2>
+    <div id="modal-gallery"></div>
+    <div id="modal-info"></div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Chat modal -->
+    <div id="chat-modal" class="modal hidden">
       <div class="modal-content">
-        <button id="modal-close" class="modal-close">×</button>
-        <div id="modal-body">
-          <h2 id="modal-title"></h2>
-          <div id="modal-gallery"></div>
-          <div id="modal-info"></div>
-        </div>
+        <button id="chat-close" class="modal-close">×</button>
+        <h2>AI Assistant</h2>
+        <div id="chat-messages"></div>
+        <input type="text" id="chat-input" placeholder="Ask about national parks..." />
+        <button id="chat-send">Send</button>
       </div>
     </div>
 
