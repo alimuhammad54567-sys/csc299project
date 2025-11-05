@@ -100,29 +100,45 @@ def api_park_detail(park_id):
 @app.route('/api/chat', methods=['POST'])
 def api_chat():
 	"""Handle chat messages with AI assistant for park questions."""
-	openai_key = os.environ.get('OPENAI_API_KEY')
-	if not openai_key:
-		return jsonify({'error': 'AI not configured. Set OPENAI_API_KEY environment variable.'}), 500
-
 	data = request.get_json()
-	user_message = data.get('message', '')
+	user_message = data.get('message', '').lower()
 	if not user_message:
 		return jsonify({'response': 'Please ask a question about national parks!'})
 
-	try:
-		client = openai.OpenAI(api_key=openai_key)
-		response = client.chat.completions.create(
-			model="gpt-3.5-turbo",
-			messages=[
-				{"role": "system", "content": "You are a helpful AI assistant for a US National Parks tracker website. Answer questions about national parks, provide facts, and help users plan visits. Keep responses concise and friendly."},
-				{"role": "user", "content": user_message}
-			],
-			max_tokens=200
-		)
-		ai_response = response.choices[0].message.content.strip()
-		return jsonify({'response': ai_response})
-	except Exception as e:
-		return jsonify({'error': str(e)}), 500
+	openai_key = os.environ.get('OPENAI_API_KEY')
+	if openai_key:
+		try:
+			client = openai.OpenAI(api_key=openai_key)
+			response = client.chat.completions.create(
+				model="gpt-3.5-turbo",
+				messages=[
+					{"role": "system", "content": "You are a helpful AI assistant for a US National Parks tracker website. Answer questions about national parks, provide facts, and help users plan visits. Keep responses concise and friendly."},
+					{"role": "user", "content": user_message}
+				],
+				max_tokens=200
+			)
+			ai_response = response.choices[0].message.content.strip()
+			return jsonify({'response': ai_response})
+		except Exception as e:
+			pass  # Fall back to simple response
+
+	# Fallback: Simple rule-based responses for common questions
+	if 'hello' in user_message or 'hi' in user_message:
+		response = "Hi! I'm here to help with questions about US National Parks. What would you like to know?"
+	elif 'yellowstone' in user_message:
+		response = "Yellowstone National Park is the first national park in the world, famous for its geysers, hot springs, and wildlife like bison and bears."
+	elif 'grand canyon' in user_message:
+		response = "The Grand Canyon is a massive gorge carved by the Colorado River, offering stunning views and hiking opportunities."
+	elif 'visit' in user_message or 'plan' in user_message:
+		response = "To visit a national park, check the official website for entry fees, reservations, and best times to go. Many require permits for activities."
+	elif 'state' in user_message or 'location' in user_message:
+		response = "National parks are located across the US. For example, Yellowstone is in Wyoming, Montana, and Idaho."
+	elif 'animal' in user_message or 'wildlife' in user_message:
+		response = "Parks are home to diverse wildlife: bears, wolves, elk, birds, and more. Always keep a safe distance and store food properly."
+	else:
+		response = "I'm a simple assistant for national parks. Try asking about specific parks, planning visits, or general facts!"
+
+	return jsonify({'response': response})
 
 
 if __name__ == '__main__':
