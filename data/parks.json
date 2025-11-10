@@ -1,0 +1,422 @@
+[
+  {
+    "id": "acad",
+    "name": "Acadia",
+    "state": "ME",
+    "lat": 44.409286,
+    "lon": -68.247501
+  },
+  {
+    "id": "arch",
+    "name": "Arches",
+    "state": "UT",
+    "lat": 38.72261844,
+    "lon": -109.5863666
+  },
+  {
+    "id": "badl",
+    "name": "Badlands",
+    "state": "SD",
+    "lat": 43.68584846,
+    "lon": -102.482942
+  },
+  {
+    "id": "bibe",
+    "name": "Big Bend",
+    "state": "TX",
+    "lat": 29.29817767,
+    "lon": -103.2297897
+  },
+  {
+    "id": "bisc",
+    "name": "Biscayne",
+    "state": "FL",
+    "lat": 25.490587,
+    "lon": -80.21023851
+  },
+  {
+    "id": "blca",
+    "name": "Black Canyon Of The Gunnison",
+    "state": "CO",
+    "lat": 38.57779869,
+    "lon": -107.7242756
+  },
+  {
+    "id": "brca",
+    "name": "Bryce Canyon",
+    "state": "UT",
+    "lat": 37.58399144,
+    "lon": -112.1826689
+  },
+  {
+    "id": "cany",
+    "name": "Canyonlands",
+    "state": "UT",
+    "lat": 38.24555783,
+    "lon": -109.8801624
+  },
+  {
+    "id": "care",
+    "name": "Capitol Reef",
+    "state": "UT",
+    "lat": 38.2821653131,
+    "lon": -111.247048378
+  },
+  {
+    "id": "cave",
+    "name": "Carlsbad Caverns",
+    "state": "NM",
+    "lat": 32.14089463,
+    "lon": -104.5529688
+  },
+  {
+    "id": "chis",
+    "name": "Channel Islands",
+    "state": "CA",
+    "lat": 33.98680093,
+    "lon": -119.9112735
+  },
+  {
+    "id": "cong",
+    "name": "Congaree",
+    "state": "SC",
+    "lat": 33.79187523,
+    "lon": -80.74867805
+  },
+  {
+    "id": "crla",
+    "name": "Crater Lake",
+    "state": "OR",
+    "lat": 42.94065854,
+    "lon": -122.1338414
+  },
+  {
+    "id": "cuva",
+    "name": "Cuyahoga Valley",
+    "state": "OH",
+    "lat": 41.26093905,
+    "lon": -81.57116722
+  },
+  {
+    "id": "deva",
+    "name": "Death Valley",
+    "state": "CA,NV",
+    "lat": 36.48753731,
+    "lon": -117.134395
+  },
+  {
+    "id": "dena",
+    "name": "Denali",
+    "state": "AK",
+    "lat": 63.29777484,
+    "lon": -151.0526568
+  },
+  {
+    "id": "drto",
+    "name": "Dry Tortugas",
+    "state": "FL",
+    "lat": 24.628741,
+    "lon": -82.87319
+  },
+  {
+    "id": "ever",
+    "name": "Everglades",
+    "state": "FL",
+    "lat": 25.37294225,
+    "lon": -80.88200301
+  },
+  {
+    "id": "gaar",
+    "name": "Gates Of The Arctic",
+    "state": "AK",
+    "lat": 67.75961636,
+    "lon": -153.2917758
+  },
+  {
+    "id": "jeff",
+    "name": "Gateway Arch",
+    "state": "MO",
+    "lat": 38.6258069,
+    "lon": -90.1892508
+  },
+  {
+    "id": "glac",
+    "name": "Glacier",
+    "state": "MT",
+    "lat": 48.68414678,
+    "lon": -113.8009306
+  },
+  {
+    "id": "glba",
+    "name": "Glacier Bay",
+    "state": "AK",
+    "lat": 58.80086718,
+    "lon": -136.8407579
+  },
+  {
+    "id": "grca",
+    "name": "Grand Canyon",
+    "state": "AZ",
+    "lat": 36.0001165336,
+    "lon": -112.121516363
+  },
+  {
+    "id": "grte",
+    "name": "Grand Teton",
+    "state": "WY",
+    "lat": 43.81853565,
+    "lon": -110.7054666
+  },
+  {
+    "id": "grba",
+    "name": "Great Basin",
+    "state": "NV",
+    "lat": 38.94617378,
+    "lon": -114.2579782
+  },
+  {
+    "id": "grsa",
+    "name": "Great Sand Dunes",
+    "state": "CO",
+    "lat": 37.79256812,
+    "lon": -105.5919572
+  },
+  {
+    "id": "grsm",
+    "name": "Great Smoky Mountains",
+    "state": "NC,TN",
+    "lat": 35.60116374,
+    "lon": -83.50818326
+  },
+  {
+    "id": "gumo",
+    "name": "Guadalupe Mountains",
+    "state": "TX",
+    "lat": 31.92304462,
+    "lon": -104.885527
+  },
+  {
+    "id": "hale",
+    "name": "Haleakal\u0101",
+    "state": "HI",
+    "lat": 20.70693015,
+    "lon": -156.1591775
+  },
+  {
+    "id": "havo",
+    "name": "Hawai\u02bbi Volcanoes",
+    "state": "HI",
+    "lat": 19.3355036,
+    "lon": -155.4700257
+  },
+  {
+    "id": "hosp",
+    "name": "Hot Springs",
+    "state": "AR",
+    "lat": 34.52414366,
+    "lon": -93.06332936
+  },
+  {
+    "id": "indu",
+    "name": "Indiana Dunes",
+    "state": "IN",
+    "lat": 41.63765525,
+    "lon": -87.09647445
+  },
+  {
+    "id": "isro",
+    "name": "Isle Royale",
+    "state": "MI",
+    "lat": 48.01145819,
+    "lon": -88.82780657
+  },
+  {
+    "id": "jotr",
+    "name": "Joshua Tree",
+    "state": "CA",
+    "lat": 33.91418525,
+    "lon": -115.8398125
+  },
+  {
+    "id": "katm",
+    "name": "Katmai",
+    "state": "AK",
+    "lat": 58.62235668,
+    "lon": -155.0126574
+  },
+  {
+    "id": "kefj",
+    "name": "Kenai Fjords",
+    "state": "AK",
+    "lat": 59.81804414,
+    "lon": -150.106502
+  },
+  {
+    "id": "kova",
+    "name": "Kobuk Valley",
+    "state": "AK",
+    "lat": 67.35631336,
+    "lon": -159.2002293
+  },
+  {
+    "id": "lacl",
+    "name": "Lake Clark",
+    "state": "AK",
+    "lat": 60.57405857,
+    "lon": -153.55535
+  },
+  {
+    "id": "lavo",
+    "name": "Lassen Volcanic",
+    "state": "CA",
+    "lat": 40.49354575,
+    "lon": -121.4075993
+  },
+  {
+    "id": "maca",
+    "name": "Mammoth Cave",
+    "state": "KY",
+    "lat": 37.19760458,
+    "lon": -86.13090198
+  },
+  {
+    "id": "meve",
+    "name": "Mesa Verde",
+    "state": "CO",
+    "lat": 37.23908345,
+    "lon": -108.4624032
+  },
+  {
+    "id": "mora",
+    "name": "Mount Rainier",
+    "state": "WA",
+    "lat": 46.86075416,
+    "lon": -121.7043885
+  },
+  {
+    "id": "neri",
+    "name": "New River Gorge",
+    "state": "WV",
+    "lat": 37.86878554,
+    "lon": -80.99956002
+  },
+  {
+    "id": "noca",
+    "name": "North Cascades",
+    "state": "WA",
+    "lat": 48.71171756,
+    "lon": -121.2069423
+  },
+  {
+    "id": "olym",
+    "name": "Olympic",
+    "state": "WA",
+    "lat": 47.80392754,
+    "lon": -123.6663848
+  },
+  {
+    "id": "pefo",
+    "name": "Petrified Forest",
+    "state": "AZ",
+    "lat": 34.98387664,
+    "lon": -109.7877678
+  },
+  {
+    "id": "pinn",
+    "name": "Pinnacles",
+    "state": "CA",
+    "lat": 36.49029208,
+    "lon": -121.1813607
+  },
+  {
+    "id": "romo",
+    "name": "Rocky Mountain",
+    "state": "CO",
+    "lat": 40.3556924,
+    "lon": -105.6972879
+  },
+  {
+    "id": "sagu",
+    "name": "Saguaro",
+    "state": "AZ",
+    "lat": 32.20909636,
+    "lon": -110.7574974
+  },
+  {
+    "id": "seki",
+    "name": "Sequoia & Kings Canyon",
+    "state": "CA",
+    "lat": 36.71277299,
+    "lon": -118.587429
+  },
+  {
+    "id": "shen",
+    "name": "Shenandoah",
+    "state": "VA",
+    "lat": 38.49236644,
+    "lon": -78.46907715
+  },
+  {
+    "id": "thro",
+    "name": "Theodore Roosevelt",
+    "state": "ND",
+    "lat": 47.17777274,
+    "lon": -103.4300083
+  },
+  {
+    "id": "viis",
+    "name": "Virgin Islands",
+    "state": "VI",
+    "lat": 18.34279656,
+    "lon": -64.74194451
+  },
+  {
+    "id": "voya",
+    "name": "Voyageurs",
+    "state": "MN",
+    "lat": 48.48370609,
+    "lon": -92.8382913
+  },
+  {
+    "id": "whsa",
+    "name": "White Sands",
+    "state": "NM",
+    "lat": 32.77907858,
+    "lon": -106.3333461
+  },
+  {
+    "id": "wica",
+    "name": "Wind Cave",
+    "state": "SD",
+    "lat": 43.58012365,
+    "lon": -103.4394709
+  },
+  {
+    "id": "wrst",
+    "name": "Wrangell - St Elias",
+    "state": "AK",
+    "lat": 61.4182147,
+    "lon": -142.6028439
+  },
+  {
+    "id": "yell",
+    "name": "Yellowstone",
+    "state": "ID,MT,WY",
+    "lat": 44.59824417,
+    "lon": -110.5471695
+  },
+  {
+    "id": "yose",
+    "name": "Yosemite",
+    "state": "CA",
+    "lat": 37.84883288,
+    "lon": -119.5571873
+  },
+  {
+    "id": "zion",
+    "name": "Zion",
+    "state": "UT",
+    "lat": 37.29839254,
+    "lon": -113.0265138
+  }
+]
