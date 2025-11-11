@@ -1,0 +1,10 @@
+PS C:\Users\AliHM\Documents\csc299-project\tasks3> uv run pytest
+================================================= test session starts =================================================
+platform win32 -- Python 3.13.9, pytest-8.4.2, pluggy-1.6.0
+rootdir: C:\Users\AliHM\Documents\csc299-project\tasks3
+configfile: pyproject.toml
+collected 4 items
+
+test_project.py ....                                                                                             [100%]
+
+================================================== 4 passed in 0.11s ==================================================
