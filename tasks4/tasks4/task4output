@@ -1,0 +1,188 @@
+PS C:\Users\AliHM\Documents\csc299-project\tasks4> uv run python main.py
+🧠 Task Summarizer
+
+Task 1:
+Develop a mobile application that allows users to track their daily water intake and sends reminders throughout the day. The app should include data visualization and goal-setting features.
+
+Summary:
+Overview
+- Mobile app to track daily water intake and send reminders
+- Includes data visualization and goal-setting
+
+Core features
+- Quick water logging (preset + custom amounts)
+- Daily/weekly/monthly intake charts
+- Custom daily goal setup
+- Scheduled and smart reminders
+- Streaks and progress summary
+- Onboarding and initial goal suggestion
+- User settings and notification control
+- Data export (CSV) and backup option
+
+User stories
+- Log water with one tap
+- Receive reminders at chosen times
+- Adjust daily goal and cup size
+- View intake trends and streaks
+- Pause reminders (do not disturb)
+- Restore data on new device
+
+Primary screens
+- Onboarding / set goal
+- Home / quick log + today progress
+- Add log / history list
+- Charts / analytics screen
+- Reminders / schedule screen
+- Settings / profile / export
+
+Data model (local)
+- User: id, dailyGoal, cupSize, timezone, preferences
+- LogEntry: id, timestamp, amount
+- Reminder: id, time, repeatPattern, enabled
+- SyncMeta: lastSync, backupId
+
+Notifications
+- Local scheduled notifications per user times
+- Smart reminder logic (based on remaining intake and wake/sleep)
+- Snooze and adaptive frequency
+- Respect system do-not-disturb and user permissions
+
+Data visualization
+- Today progress ring
+- Hourly timeline for today
+- 7/30/90-day line and bar charts
+- Average daily intake and goal attainment %
+- Highlight streaks and longest streak
+
+Goal-setting
+- Default goal by weight/age suggestion
+- Manual goal edits
+- Adaptive goal suggestions based on usage trends
+
+Architecture options
+- Single-device (local only): SQLite/Realm, no backend
+- Cloud-sync: REST API + auth, PostgreSQL or Firebase
+- Cross-platform: React Native or Flutter
+
+Tech stack suggestions
+- Frontend: React Native + TypeScript OR Flutter
+- Storage: SQLite (WatermelonDB/Room) or Realm
+- Notifications: native push/local (APNs/Firebase Messaging/local)
+- Backend (optional): Firebase Firestore or Node.js + PostgreSQL
+- Charts: Recharts/MPAndroidChart/Charts (iOS) / FL Chart
+
+Third-party libs
+- Local DB: Realm or SQLite wrapper
+- Charts: Victory/React Native SVG Charts or FL Chart
+- Notifications: react-native-push-notification or flutter_local_notifications
+- Analytics: Firebase Analytics (optional)
+
+Security & privacy
+- Store minimal personal data
+- Optional passcode/biometric lock
+- GDPR-compliant export/delete data
+- Encrypted local backups
+
+Testing & QA
+- Unit tests for core logic
+- Integration tests for notifications and storage
+- Usability testing for onboarding and reminders
+- Device compatibility for iOS/Android
+
+Milestones & timeline (MVP)
+- Week 1: Requirements, wireframes, setup
+- Week 2: Logging, local storage, home UI
+- Week 3: Reminders, notification flows
+- Week 4: Charts, goal-setting, settings
+- Week 5: Polish, QA, app store prep
+- Optional +2–3 weeks for cloud sync & accounts
+
+Acceptance criteria
+- Log added within 3 taps
+- Reminders delivered on schedule
+- Charts reflect logged data accurately
+- Goal adjustable and progress updates in real time
+
+Deliverables
+- Installable APK/IPAs (or builds)
+- Source code repo with README
+- Design assets and wireframes
+- Test cases and deployment instructions
+
+Next steps
+- Choose platform (React Native or Flutter)
+- Confirm MVP feature list and timeline
+- Provide design preferences and branding assets
+
+------------------------------------------------------------
+
+Task 2:
+Write a research paper analyzing how artificial intelligence impacts the job market, focusing on automation, new opportunities, and skill shifts in the workforce.
+
+Summary:
+Title: Artificial Intelligence and the Labor Market: Automation, New Opportunities, and Skill Shifts
+
+Abstract
+This paper synthesizes empirical and theoretical literature to analyze how artificial intelligence (AI) affects the job market via three interrelated channels: automation (task substitution and displacement), creation of new opportunities (new tasks, occupations, and firms), and shifts in skill demand (upskilling, reskilling, and task redesign). AI accelerates routine-task automation and augments cognitive and creative work, producing mixed employment outcomes that vary by sector, occupation, and policy context. Evidence shows displacement is substantial in some routine-intensive roles but is often accompanied by productivity gains, job reallocation, and emergent demand for complementary skills. Policy and firm responses — education redesign, targeted training, and active labor-market measures — determine whether transitions are disruptive or broadly beneficial. The paper concludes with research gaps and policy recommendations to manage transitions equitably.
+
+1. Introduction
+AI—particularly advances in machine learning, natural language processing, and computer vision—has raised concerns about large-scale job loss and optimistic claims about productivity-led job creation. The reality is nuanced: AI changes the composition of tasks within jobs, creates new economic activities, and alters the skills employers require. This paper reviews major findings and frames policy options for smoothing transitions.
+
+2. Conceptual framework
+Use a task-based lens: jobs = bundles of tasks (Autor et al., 2003; Acemoglu & Restrepo, 2018). AI affects labor through:
+- Task automation: substitution of human-performed tasks by machines.
+- Task augmentation: technologies complement human labor, raising productivity.
+- Task creation: new tasks and occupations emerge from new technologies and markets.
+Net employment effects are the balance between displacement, augmentation-driven demand, and net new job creation.
+
+3. Evidence on automation and displacement
+- Scope and sectors: Routine cognitive and manual tasks are most susceptible (Autor, 2015; Arntz et al., 2016). Manufacturing, clerical work, and some service roles have long experienced automation; AI extends this to higher-order cognitive tasks (e.g., document review, basic diagnostics).
+- Magnitude: Estimates vary. Task-based analyses show a substantial share of tasks exposed to automation risk, but occupation-level exposure is heterogeneous. Macroevidence finds productivity gains often offset direct job losses over time, although local and short-to-medium-term dislocations occur (Acemoglu & Restrepo, 2019; Bessen, 2019).
+- Worker heterogeneity: Lower-skilled workers in routine roles face higher displacement risk; workers in complex interpersonal or creative jobs face lower direct automation risk but may see task reallocation within jobs.
+- Labor-market dynamics: Automation can reduce demand for displaced roles, depress wages in affected labor markets, and shift employment geographically and across industries (Autor et al., 2020).
+
+4. New opportunities and job creation
+- Task recomposition: AI creates tasks that did not previously exist (e.g., data labeling, model oversight, prompt engineering) and augments roles (e.g., analysts produce more insights).
+- Firm and market creation: AI-driven startups and new business processes generate demand for engineers, product managers, and specialized service providers (McKinsey Global Institute, 2017; WEF, 2020).
+- Complementarity and productivity: When AI complements skilled workers, firms can expand output, increasing demand for labor in other tasks and roles (Brynjolfsson & McAfee, 2014).
+- Empirical patterns: Historical technology adoption often led to net job creation over decades, though sectoral reallocation and short-run displacements were significant (Bessen, 2019). Early evidence on AI suggests growth in demand for certain technical and managerial roles even as some routine occupations decline.
+
+5. Skill shifts and workforce implications
+- Changing skill premium: AI raises demand for digital, analytical, and higher-order cognitive skills (problem-solving, critical thinking), as well as socio-emotional skills (communication, teamwork) that are complementary to AI (WEF, 2020).
+- Polarization and upskilling: Some labor markets may polarize: growth in high-skill, high-pay jobs and in low-skill service jobs, shrinking middle-skill routine roles (Autor, 2015). However, AI’s ability to automate complex tasks could broaden impacts beyond middle-skill work.
+- Lifelong learning and credentialing: Continuous learning, microcredentials, and on-the-job training become central. Employers increasingly value adaptability and digital literacy.
+- Inequality and access: Disparities in education, training access, and mobility can amplify wage and employment inequality unless mitigated by policy.
+
+6. Policy and firm responses
+- Education and training: Revamp curricula to emphasize digital skills, critical thinking, and socio-emotional competencies. Expand vocational and modular reskilling programs targeted at displaced workers.
+- Active labor-market policies: Job-search assistance, wage insurance, mobility supports, and public employment programs can cushion transitions. Evidence suggests targeted retraining with employer involvement is more effective.
+- Regulation and social safety nets: Strengthen unemployment insurance, portable benefits, and consider novel instruments (e.g., wage subsidies, tax incentives for retraining). Debate continues on universal basic income and shorter workweeks as adjustment tools.
+- Firm strategies: Firms should invest in human-centered AI design, internal training, job redesign to augment rather than replace workers, and partnerships with educational institutions.
+- Labor-market institutions: Strong collective bargaining and social dialogue can help negotiate transitions, protect workers’ rights, and shape fair task assignment.
+
+7. Research gaps and measurement challenges
+- Measurement: Existing measures of automation exposure rely on task-level proxies that may misstate the pace of AI adoption. Better firm- and task-level data on AI use and job impacts is needed.
+- Causal inference: More quasi-experimental studies are required to identify causal impacts of AI adoption on employment and wages across contexts.
+- Sectoral and geographic heterogeneity: Understanding local labor-market dynamics and sector-specific adoption patterns is critical for targeted policy.
+- Interaction with other trends: AI interacts with globalization, demographic change, and climate policy; integrated analysis is limited.
+
+8. Policy recommendations (concise)
+- Scale up lifelong learning ecosystems: subsidize modular training, incentivize employer-provided reskilling, and fund community-based programs.
+- Target transitional support: strengthen active labor-market measures in regions and sectors with rapid AI adoption; provide wage insurance and mobility assistance.
+- Promote inclusive access to digital infrastructure and education to prevent widening inequality.
+- Encourage human-centered AI: require firms to assess job impacts, prioritize technologies that augment workers, and engage in social dialogue over automation plans.
+- Improve measurement and forecasting: invest in data collection on AI deployment, task changes, and firm-level labor outcomes.
+
+9. Conclusion
+AI reshapes the labor market by automating tasks, enabling new work, and shifting skill demand. Impacts are uneven across occupations, sectors, and geographies. Policy and firm choices determine whether AI’s net effects are broadly beneficial or socially disruptive. Proactive investment in education, targeted retraining, social protections, and human-centered deployment of AI can maximize opportunities and reduce harms.
+
+Select references (representative)
+- Acemoglu, D., & Restrepo, P. (2018). Artificial Intelligence, Automation and Work. (NBER Working Paper).
+- Autor, D. H. (2015). Why Are There Still So Many Jobs? The History and Future of Workplace Automation. Journal of Economic Perspectives.
+- Arntz, M., Gregory, T., & Zierahn, U. (2016). The Risk of Automation for Jobs in OECD Countries: A Comparative Analysis. OECD Social, Employment and Migration Working Papers.
+- Bessen, J. (2019). AI and Jobs: The Role of Demand. NBER Working Paper.
+- Brynjolfsson, E., & McAfee, A. (2014). The Second Machine Age. W. W. Norton.
+- McKinsey Global Institute. (2017). Jobs Lost, Jobs Gained: Workforce Transitions in a Time of Automation.
+- World Economic Forum. (2020). The Future of Jobs Report.
+
+(End of paper)
