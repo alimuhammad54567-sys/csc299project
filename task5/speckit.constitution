@@ -1,0 +1,95 @@
+Speckit Constitution
+
+Purpose
+- This document defines the technical principles and governance that guide design, implementation, and maintenance of Speckit code and systems. Its aim is to keep work clear, simple, reliable, well-tested, and consistent for both users and contributors.
+
+Core Principles
+1. Clarity
+- Code must be easy to read and understand by another competent engineer. Prefer explicitness over cleverness. Use descriptive names, clear function boundaries, and short, well-factored units.
+- APIs and public interfaces should be documented and stable. Comments explain why, not what, when code is non-obvious.
+
+2. Simplicity
+- Prefer the simplest solution that solves the problem correctly. Avoid premature optimization and unnecessary abstraction.
+- Favor straightforward designs over micro-optimizations that add cognitive load.
+
+3. Code Quality
+- Maintain consistent style, structure, and idioms across the codebase. Follow the established style guide and linters.
+- Keep functions and modules focused (single responsibility). Break large functions into well-named helpers when doing so improves readability and testability.
+
+4. Testing Standards
+- Every public API or behavior must have automated tests that validate correct behavior and guard against regressions.
+- Tests should be fast, deterministic, and easy to run locally. Follow testing pyramid: many unit tests, a smaller set of integration tests, and targeted end-to-end tests for critical flows.
+- Aim for meaningful coverage targets per module; coverage numbers are a health indicator, not the only measure.
+
+5. User Experience Consistency
+- Product-facing behavior and APIs should be consistent across modules. Similar problems should have similar solutions and predictable configuration.
+- Prioritize predictable error handling, clear messages, and defaults that are safe and helpful.
+
+6. Maintainability & Observability
+- Code should be easy to change: prefer modular designs, clear boundaries, and minimal global state.
+- Instrument critical paths and failures with logs, metrics, and traces sufficient for diagnosis.
+
+7. Security & Privacy
+- Consider security and privacy early. Validate inputs, follow least privilege, and avoid leaking sensitive data in logs or error messages.
+
+Governance: How Principles Guide Decisions
+
+Decision-Making Flow
+1. Define the desired outcome and success criteria (user impact, performance, reliability, developer ergonomics).
+2. Identify relevant principles from this document and rank them for the decision (e.g., prioritize safety/security over performance in sensitive flows).
+3. Evaluate candidate solutions against the ranked principles and success criteria. Use a short tradeoff matrix when choices are non-trivial.
+4. Prototype minimally when uncertainty exists; measure and iterate.
+5. Prefer solutions that optimize for clarity and testability first; optimize performance only when measurements show need.
+
+When Principles Conflict
+- Use this priority order unless a specific context dictates otherwise: Safety/Security > Correctness (tests) > User Experience Consistency > Maintainability/Clarity > Simplicity > Performance.
+- Document the rationale for any decision that deviates from the default ordering and include a follow-up plan to revisit if circumstances change.
+
+Implementation Guidance and Checklists
+
+Pull Request Checklist (required for merge)
+- **Clarity:** Names and comments reviewed; no surprising side effects.
+- **Simplicity:** No unnecessary complexity; alternatives considered in PR description.
+- **Tests:** Units for logic branches; integration tests for cross-module behavior; CI green.
+- **Docs:** Public APIs documented; README or CHANGELOG updated if behavior changes.
+- **Security:** Inputs validated; secrets not exposed; threat considerations noted if relevant.
+- **Performance:** If performance-sensitive, add micro-benchmarks or data demonstrating improvement.
+
+Testing Rules
+- Unit tests must run fast and mock external dependencies.
+- Integration tests exercise real interactions (databases, network) but should be limited in number and runnable in CI.
+- End-to-end tests target critical user journeys only; they may be flaky and should be treated carefully.
+- CI must run the full test suite and block merges on regressions for the changed area.
+
+API & Interface Rules
+- Public interfaces should be stable and versioned. Breaking changes require a migration plan and communicated deprecation cycle.
+- Prefer explicit contracts (data shapes, types) and validate at boundaries.
+
+Coding Conventions
+- Follow the repository's style guide and linter configuration. Fix linter issues before merging.
+- Keep functions short (typically < 100 lines); prefer clarity over clever compression of logic.
+
+Governance, Ownership & Escalation
+- Each major component must have an owner (team or individual) responsible for review and maintenance.
+- For disagreements on principle application, follow this escalation path:
+  1. Discuss in PR and add explicit rationale.
+  2. If unresolved, bring to the component owner for arbitration.
+  3. If still unresolved, escalate to the architecture/tech lead or an appointed governance board.
+- Document decisions in a shared Decisions log (e.g., `DECISIONS.md`) with rationale and date.
+
+Exceptions and Temporary Measures
+- Exceptions to these principles are allowed but must be explicit: create an exception ticket describing the reason, the expected lifetime, and a plan to remove or revisit it.
+
+Measuring Compliance and Health
+- Track these signals: test pass rate, average PR review time, production incidents tied to code changes, and basic code quality metrics (linter failures, cyclomatic complexity hotspots).
+- Review the constitution annually and after major incidents; adjust principles as the project evolves.
+
+Practical Examples
+- Choosing between a small in-memory cache and a distributed cache: prefer in-memory for clarity and simplicity when usage is limited to a single process; pick distributed caching only when measured load requires it and include fallbacks, instrumentation and tests.
+- Introducing a new dependency: require explicit approval from component owner; add minimal required scope, security review, and a roll-back plan.
+
+Onboarding & Documentation
+- New contributors should be pointed to this file as part of onboarding and given a short checklist for first PRs (linters, tests, PR size guidance).
+
+Final Notes
+- This constitution is a living guide: it is intentionally concise and practical. Use it to align day-to-day technical work and to resolve tradeoffs. Propose amendments by opening a PR against this file and documenting the rationale.
