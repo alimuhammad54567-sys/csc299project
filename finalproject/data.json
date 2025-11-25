@@ -1,0 +1,597 @@
+{
+  "parks": [
+    {
+      "id": "3568cce4-828e-46c6-9aec-c91472e9bcc3",
+      "name": "Yellowstone",
+      "state": "WY",
+      "created_at": "2025-11-24T18:21:06.449214",
+      "lat": 44.59824417,
+      "lon": -110.5471695,
+      "source_id": "yell"
+    },
+    {
+      "id": "fb3fa100-aa1f-4e0c-a853-9bc4ba29ec23",
+      "name": "Acadia",
+      "state": "ME",
+      "created_at": "2025-11-24T18:28:00.979483",
+      "lat": 44.409286,
+      "lon": -68.247501,
+      "source_id": "acad"
+    },
+    {
+      "id": "789b0ca5-e041-47ae-bd42-630889463703",
+      "name": "Arches",
+      "state": "UT",
+      "created_at": "2025-11-24T18:28:01.011668",
+      "lat": 38.72261844,
+      "lon": -109.5863666,
+      "source_id": "arch"
+    },
+    {
+      "id": "32f5777c-d239-4d86-96c4-e15c21e0c42b",
+      "name": "Badlands",
+      "state": "SD",
+      "created_at": "2025-11-24T18:28:01.039189",
+      "lat": 43.68584846,
+      "lon": -102.482942,
+      "source_id": "badl"
+    },
+    {
+      "id": "9cacee87-72a7-4512-b4bc-ecf182ec6ec7",
+      "name": "Big Bend",
+      "state": "TX",
+      "created_at": "2025-11-24T18:28:01.075140",
+      "lat": 29.29817767,
+      "lon": -103.2297897,
+      "source_id": "bibe"
+    },
+    {
+      "id": "65bdf572-cc98-4bc7-bfd2-c613db26932c",
+      "name": "Biscayne",
+      "state": "FL",
+      "created_at": "2025-11-24T18:28:01.110785",
+      "lat": 25.490587,
+      "lon": -80.21023851,
+      "source_id": "bisc"
+    },
+    {
+      "id": "c86eeb35-1628-4c2d-99af-5f7acc0bbf95",
+      "name": "Black Canyon Of The Gunnison",
+      "state": "CO",
+      "created_at": "2025-11-24T18:28:01.143521",
+      "lat": 38.57779869,
+      "lon": -107.7242756,
+      "source_id": "blca"
+    },
+    {
+      "id": "b5e370bc-de08-48f3-a283-3480c9befe72",
+      "name": "Bryce Canyon",
+      "state": "UT",
+      "created_at": "2025-11-24T18:28:01.177297",
+      "lat": 37.58399144,
+      "lon": -112.1826689,
+      "source_id": "brca"
+    },
+    {
+      "id": "174e5b3a-c11c-4141-a938-10086e7e8ae1",
+      "name": "Canyonlands",
+      "state": "UT",
+      "created_at": "2025-11-24T18:28:01.209178",
+      "lat": 38.24555783,
+      "lon": -109.8801624,
+      "source_id": "cany"
+    },
+    {
+      "id": "08d1d958-dc49-45c2-b2d8-2670ec7617b1",
+      "name": "Capitol Reef",
+      "state": "UT",
+      "created_at": "2025-11-24T18:28:01.238700",
+      "lat": 38.2821653131,
+      "lon": -111.247048378,
+      "source_id": "care"
+    },
+    {
+      "id": "ba79f506-eeea-4da0-a25a-d4104b23fade",
+      "name": "Carlsbad Caverns",
+      "state": "NM",
+      "created_at": "2025-11-24T18:28:01.276995",
+      "lat": 32.14089463,
+      "lon": -104.5529688,
+      "source_id": "cave"
+    },
+    {
+      "id": "a9740f6b-92e0-4681-b4bb-2f915d2aba2f",
+      "name": "Channel Islands",
+      "state": "CA",
+      "created_at": "2025-11-24T18:28:01.309397",
+      "lat": 33.98680093,
+      "lon": -119.9112735,
+      "source_id": "chis"
+    },
+    {
+      "id": "3933e9e6-5af8-40c9-9c81-0ed7f0a49637",
+      "name": "Congaree",
+      "state": "SC",
+      "created_at": "2025-11-24T18:28:01.340050",
+      "lat": 33.79187523,
+      "lon": -80.74867805,
+      "source_id": "cong"
+    },
+    {
+      "id": "7e44956d-da24-48c2-8804-0e318ef9442c",
+      "name": "Crater Lake",
+      "state": "OR",
+      "created_at": "2025-11-24T18:28:01.369840",
+      "lat": 42.94065854,
+      "lon": -122.1338414,
+      "source_id": "crla"
+    },
+    {
+      "id": "ec44ee60-8f32-4278-8cbb-f3551e88429e",
+      "name": "Cuyahoga Valley",
+      "state": "OH",
+      "created_at": "2025-11-24T18:28:01.397468",
+      "lat": 41.26093905,
+      "lon": -81.57116722,
+      "source_id": "cuva"
+    },
+    {
+      "id": "fa4604b5-3b8b-4472-a19d-cb751836298f",
+      "name": "Death Valley",
+      "state": "CA,NV",
+      "created_at": "2025-11-24T18:28:01.428306",
+      "lat": 36.48753731,
+      "lon": -117.134395,
+      "source_id": "deva"
+    },
+    {
+      "id": "e2e5a25f-d4bb-460e-9ef7-8b3eb0aa89b3",
+      "name": "Denali",
+      "state": "AK",
+      "created_at": "2025-11-24T18:28:01.457287",
+      "lat": 63.29777484,
+      "lon": -151.0526568,
+      "source_id": "dena"
+    },
+    {
+      "id": "d86cacf3-3293-4427-9e2f-d88f42236cdf",
+      "name": "Dry Tortugas",
+      "state": "FL",
+      "created_at": "2025-11-24T18:28:01.487651",
+      "lat": 24.628741,
+      "lon": -82.87319,
+      "source_id": "drto"
+    },
+    {
+      "id": "7fc17857-20bd-4516-bc21-df31d5085b72",
+      "name": "Everglades",
+      "state": "FL",
+      "created_at": "2025-11-24T18:28:01.515588",
+      "lat": 25.37294225,
+      "lon": -80.88200301,
+      "source_id": "ever"
+    },
+    {
+      "id": "92134eb3-fab1-462a-bdad-93b1713e5b67",
+      "name": "Gates Of The Arctic",
+      "state": "AK",
+      "created_at": "2025-11-24T18:28:01.545194",
+      "lat": 67.75961636,
+      "lon": -153.2917758,
+      "source_id": "gaar"
+    },
+    {
+      "id": "5e8b6a1c-c106-4959-9f34-2678700b938d",
+      "name": "Gateway Arch",
+      "state": "MO",
+      "created_at": "2025-11-24T18:28:01.574848",
+      "lat": 38.6258069,
+      "lon": -90.1892508,
+      "source_id": "jeff"
+    },
+    {
+      "id": "c14bb5f4-cc88-4e7e-92f0-641fb880cd0a",
+      "name": "Glacier",
+      "state": "MT",
+      "created_at": "2025-11-24T18:28:01.624905",
+      "lat": 48.68414678,
+      "lon": -113.8009306,
+      "source_id": "glac"
+    },
+    {
+      "id": "929ded12-6e0e-4f8b-a55e-9b43ad95ac57",
+      "name": "Glacier Bay",
+      "state": "AK",
+      "created_at": "2025-11-24T18:28:01.654218",
+      "lat": 58.80086718,
+      "lon": -136.8407579,
+      "source_id": "glba"
+    },
+    {
+      "id": "bb97f4f0-5ce5-4e58-8d32-e62c3e75938e",
+      "name": "Grand Canyon",
+      "state": "AZ",
+      "created_at": "2025-11-24T18:28:01.686160",
+      "lat": 36.0001165336,
+      "lon": -112.121516363,
+      "source_id": "grca"
+    },
+    {
+      "id": "2943c70b-f86e-4778-9c5a-8274ea15ec7b",
+      "name": "Grand Teton",
+      "state": "WY",
+      "created_at": "2025-11-24T18:28:01.713048",
+      "lat": 43.81853565,
+      "lon": -110.7054666,
+      "source_id": "grte"
+    },
+    {
+      "id": "f0e335ee-2f31-4e57-a5bb-ccd7bd9a3f2c",
+      "name": "Great Basin",
+      "state": "NV",
+      "created_at": "2025-11-24T18:28:01.741505",
+      "lat": 38.94617378,
+      "lon": -114.2579782,
+      "source_id": "grba"
+    },
+    {
+      "id": "bbceee3f-8eaf-40d9-987f-033da6a68bb9",
+      "name": "Great Sand Dunes",
+      "state": "CO",
+      "created_at": "2025-11-24T18:28:01.773814",
+      "lat": 37.79256812,
+      "lon": -105.5919572,
+      "source_id": "grsa"
+    },
+    {
+      "id": "5df22229-aed7-453c-b8d8-3db7d7feafea",
+      "name": "Great Smoky Mountains",
+      "state": "NC,TN",
+      "created_at": "2025-11-24T18:28:01.808726",
+      "lat": 35.60116374,
+      "lon": -83.50818326,
+      "source_id": "grsm"
+    },
+    {
+      "id": "4795967a-9b0d-4e91-9e2f-f51dc75a92ce",
+      "name": "Guadalupe Mountains",
+      "state": "TX",
+      "created_at": "2025-11-24T18:28:01.839715",
+      "lat": 31.92304462,
+      "lon": -104.885527,
+      "source_id": "gumo"
+    },
+    {
+      "id": "2da3e81b-76ef-4200-8e13-57e9e96229d4",
+      "name": "Haleakal\u0101",
+      "state": "HI",
+      "created_at": "2025-11-24T18:28:01.866454",
+      "lat": 20.70693015,
+      "lon": -156.1591775,
+      "source_id": "hale"
+    },
+    {
+      "id": "465a9d93-ffc1-4c3c-9e99-2cacb0497435",
+      "name": "Hawai\u02bbi Volcanoes",
+      "state": "HI",
+      "created_at": "2025-11-24T18:28:01.895642",
+      "lat": 19.3355036,
+      "lon": -155.4700257,
+      "source_id": "havo"
+    },
+    {
+      "id": "0c8ec090-cc0c-4127-bf5d-fe22a6e22322",
+      "name": "Hot Springs",
+      "state": "AR",
+      "created_at": "2025-11-24T18:28:01.923848",
+      "lat": 34.52414366,
+      "lon": -93.06332936,
+      "source_id": "hosp"
+    },
+    {
+      "id": "03fd0527-1b68-4ef6-8061-f17a90a84648",
+      "name": "Indiana Dunes",
+      "state": "IN",
+      "created_at": "2025-11-24T18:28:01.955326",
+      "lat": 41.63765525,
+      "lon": -87.09647445,
+      "source_id": "indu"
+    },
+    {
+      "id": "3bba8816-951e-4b51-a116-57e8360cd374",
+      "name": "Isle Royale",
+      "state": "MI",
+      "created_at": "2025-11-24T18:28:01.987066",
+      "lat": 48.01145819,
+      "lon": -88.82780657,
+      "source_id": "isro"
+    },
+    {
+      "id": "457d445c-61f1-49a8-9b6f-5d5049e12039",
+      "name": "Joshua Tree",
+      "state": "CA",
+      "created_at": "2025-11-24T18:28:02.037835",
+      "lat": 33.91418525,
+      "lon": -115.8398125,
+      "source_id": "jotr"
+    },
+    {
+      "id": "a3625343-4d81-49d5-bcd0-3364aac2f47a",
+      "name": "Katmai",
+      "state": "AK",
+      "created_at": "2025-11-24T18:28:02.066831",
+      "lat": 58.62235668,
+      "lon": -155.0126574,
+      "source_id": "katm"
+    },
+    {
+      "id": "218eaaee-205c-4d5e-961a-cc2209119487",
+      "name": "Kenai Fjords",
+      "state": "AK",
+      "created_at": "2025-11-24T18:28:02.100093",
+      "lat": 59.81804414,
+      "lon": -150.106502,
+      "source_id": "kefj"
+    },
+    {
+      "id": "8213b7c4-bb4d-4225-a42b-dbffc6f22aef",
+      "name": "Kobuk Valley",
+      "state": "AK",
+      "created_at": "2025-11-24T18:28:02.141692",
+      "lat": 67.35631336,
+      "lon": -159.2002293,
+      "source_id": "kova"
+    },
+    {
+      "id": "37092c13-569f-4499-8152-c68f782db8f9",
+      "name": "Lake Clark",
+      "state": "AK",
+      "created_at": "2025-11-24T18:28:02.171675",
+      "lat": 60.57405857,
+      "lon": -153.55535,
+      "source_id": "lacl"
+    },
+    {
+      "id": "f4d14a87-310d-41c8-b9a0-59e130150da9",
+      "name": "Lassen Volcanic",
+      "state": "CA",
+      "created_at": "2025-11-24T18:28:02.206265",
+      "lat": 40.49354575,
+      "lon": -121.4075993,
+      "source_id": "lavo"
+    },
+    {
+      "id": "20e41118-ad6d-4842-8889-6bd51ca7095f",
+      "name": "Mammoth Cave",
+      "state": "KY",
+      "created_at": "2025-11-24T18:28:02.237329",
+      "lat": 37.19760458,
+      "lon": -86.13090198,
+      "source_id": "maca"
+    },
+    {
+      "id": "311ce094-9488-4657-a770-c0180d7981c8",
+      "name": "Mesa Verde",
+      "state": "CO",
+      "created_at": "2025-11-24T18:28:02.265005",
+      "lat": 37.23908345,
+      "lon": -108.4624032,
+      "source_id": "meve"
+    },
+    {
+      "id": "64eb7721-367b-4cb1-9224-c93e8290deaa",
+      "name": "Mount Rainier",
+      "state": "WA",
+      "created_at": "2025-11-24T18:28:02.298855",
+      "lat": 46.86075416,
+      "lon": -121.7043885,
+      "source_id": "mora"
+    },
+    {
+      "id": "6cc4338e-0e36-45f4-91af-50bdfde6064c",
+      "name": "New River Gorge",
+      "state": "WV",
+      "created_at": "2025-11-24T18:28:02.329895",
+      "lat": 37.86878554,
+      "lon": -80.99956002,
+      "source_id": "neri"
+    },
+    {
+      "id": "1a6f604e-8936-4502-b925-75b12d297433",
+      "name": "North Cascades",
+      "state": "WA",
+      "created_at": "2025-11-24T18:28:02.382294",
+      "lat": 48.71171756,
+      "lon": -121.2069423,
+      "source_id": "noca"
+    },
+    {
+      "id": "cab9fd1e-a0c9-41c1-b4f7-284d745f7095",
+      "name": "Olympic",
+      "state": "WA",
+      "created_at": "2025-11-24T18:28:02.414955",
+      "lat": 47.80392754,
+      "lon": -123.6663848,
+      "source_id": "olym"
+    },
+    {
+      "id": "c9bdfe9e-ec4a-4936-b5bd-522da73b4d2b",
+      "name": "Petrified Forest",
+      "state": "AZ",
+      "created_at": "2025-11-24T18:28:02.446445",
+      "lat": 34.98387664,
+      "lon": -109.7877678,
+      "source_id": "pefo"
+    },
+    {
+      "id": "f4b61fe0-0aac-45d3-a06a-c7da629ae811",
+      "name": "Pinnacles",
+      "state": "CA",
+      "created_at": "2025-11-24T18:28:02.491592",
+      "lat": 36.49029208,
+      "lon": -121.1813607,
+      "source_id": "pinn"
+    },
+    {
+      "id": "bef2e06d-832d-4ea0-8c84-f5410f093683",
+      "name": "Rocky Mountain",
+      "state": "CO",
+      "created_at": "2025-11-24T18:28:02.531849",
+      "lat": 40.3556924,
+      "lon": -105.6972879,
+      "source_id": "romo"
+    },
+    {
+      "id": "c27d4a2e-c478-49a0-9fa6-ef007e8a472a",
+      "name": "Saguaro",
+      "state": "AZ",
+      "created_at": "2025-11-24T18:28:02.562866",
+      "lat": 32.20909636,
+      "lon": -110.7574974,
+      "source_id": "sagu"
+    },
+    {
+      "id": "516f2480-56a4-45b1-bdc8-c1ef1e4361de",
+      "name": "Sequoia & Kings Canyon",
+      "state": "CA",
+      "created_at": "2025-11-24T18:28:02.582279",
+      "lat": 36.71277299,
+      "lon": -118.587429,
+      "source_id": "seki"
+    },
+    {
+      "id": "3bb01ef2-1343-41ee-b1e1-3fd13bdf554f",
+      "name": "Shenandoah",
+      "state": "VA",
+      "created_at": "2025-11-24T18:28:02.604509",
+      "lat": 38.49236644,
+      "lon": -78.46907715,
+      "source_id": "shen"
+    },
+    {
+      "id": "5bf0690f-e580-4c02-be64-d093ab6f676c",
+      "name": "Theodore Roosevelt",
+      "state": "ND",
+      "created_at": "2025-11-24T18:28:02.628701",
+      "lat": 47.17777274,
+      "lon": -103.4300083,
+      "source_id": "thro"
+    },
+    {
+      "id": "e5bd8cb6-18be-4465-8e7f-00004ef436d4",
+      "name": "Virgin Islands",
+      "state": "VI",
+      "created_at": "2025-11-24T18:28:02.651912",
+      "lat": 18.34279656,
+      "lon": -64.74194451,
+      "source_id": "viis"
+    },
+    {
+      "id": "60a09b72-60ca-40d9-aea9-0a750dc8717e",
+      "name": "Voyageurs",
+      "state": "MN",
+      "created_at": "2025-11-24T18:28:02.671719",
+      "lat": 48.48370609,
+      "lon": -92.8382913,
+      "source_id": "voya"
+    },
+    {
+      "id": "9cfe6d46-e97b-45fa-8d10-c04016c5d543",
+      "name": "White Sands",
+      "state": "NM",
+      "created_at": "2025-11-24T18:28:02.692493",
+      "lat": 32.77907858,
+      "lon": -106.3333461,
+      "source_id": "whsa"
+    },
+    {
+      "id": "e72c6cf4-53a7-4c26-88f9-e55355f6fedd",
+      "name": "Wind Cave",
+      "state": "SD",
+      "created_at": "2025-11-24T18:28:02.714132",
+      "lat": 43.58012365,
+      "lon": -103.4394709,
+      "source_id": "wica"
+    },
+    {
+      "id": "7a59e61b-0fcc-4db3-b023-44ae2a4c717a",
+      "name": "Wrangell - St Elias",
+      "state": "AK",
+      "created_at": "2025-11-24T18:28:02.735650",
+      "lat": 61.4182147,
+      "lon": -142.6028439,
+      "source_id": "wrst"
+    },
+    {
+      "id": "8f70ee52-5538-4347-8c52-3e1f22010b09",
+      "name": "Yosemite",
+      "state": "CA",
+      "created_at": "2025-11-24T18:28:02.757619",
+      "lat": 37.84883288,
+      "lon": -119.5571873,
+      "source_id": "yose",
+      "notes": "Great hike at Upper Falls; bring water."
+    },
+    {
+      "id": "1849dec0-3e53-4891-a2ae-09cf832a7efd",
+      "name": "Zion",
+      "state": "UT",
+      "created_at": "2025-11-24T18:28:02.778314",
+      "lat": 37.29839254,
+      "lon": -113.0265138,
+      "source_id": "zion"
+    },
+    {
+      "id": "97ecfb6c-3464-4248-a0cb-ae4c965853aa",
+      "name": "Indiana dunes",
+      "state": "IL",
+      "lat": null,
+      "lon": null,
+      "source_id": null,
+      "notes": null,
+      "created_at": "2025-11-24T18:52:43.597686"
+    }
+  ],
+  "visits": [
+    {
+      "id": "1936f4ce-4d5b-46f5-84b1-e8a51a6d9051",
+      "park_id": "3568cce4-828e-46c6-9aec-c91472e9bcc3",
+      "trail": "Upper Loop",
+      "start": null,
+      "end": null,
+      "party_size": 4,
+      "notes": null,
+      "created_at": "2025-11-24T18:22:20.253071"
+    },
+    {
+      "id": "da372c39-fd6d-44f5-84ba-0d891bb55da4",
+      "park_id": "3568cce4-828e-46c6-9aec-c91472e9bcc3",
+      "trail": null,
+      "start": null,
+      "end": null,
+      "party_size": 3,
+      "notes": null,
+      "created_at": "2025-11-24T18:43:45.511762"
+    },
+    {
+      "id": "f87f632f-1b48-4edd-bd28-9e39f6676fb7",
+      "park_id": "8f70ee52-5538-4347-8c52-3e1f22010b09",
+      "trail": null,
+      "start": "2026-08-01",
+      "end": null,
+      "party_size": 2,
+      "notes": "Test visit",
+      "created_at": "2025-11-24T18:46:57.684639"
+    },
+    {
+      "id": "0d1519a5-9031-43de-b94e-60b79eb8c9d7",
+      "park_id": "1849dec0-3e53-4891-a2ae-09cf832a7efd",
+      "trail": "lowerwacker",
+      "start": null,
+      "end": null,
+      "party_size": 1,
+      "notes": null,
+      "created_at": "2025-11-24T18:53:28.008996"
+    }
+  ]
+}
