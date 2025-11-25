@@ -27,8 +27,8 @@ def init_db():
         _write_data({"parks": [], "visits": []})
 
 
-def add_park(name: str, state: Optional[str] = None, lat: Optional[float] = None, lon: Optional[float] = None, source_id: Optional[str] = None) -> Park:
-    p = Park.create(name=name, state=state, lat=lat, lon=lon, source_id=source_id)
+def add_park(name: str, state: Optional[str] = None, lat: Optional[float] = None, lon: Optional[float] = None, source_id: Optional[str] = None, notes: Optional[str] = None) -> Park:
+    p = Park.create(name=name, state=state, lat=lat, lon=lon, source_id=source_id, notes=notes)
     data = _read_data()
     data['parks'].append({
         'id': p.id,
@@ -122,6 +122,27 @@ def get_visited_park_ids() -> set:
         if pid:
             ids.add(pid)
     return ids
+
+
+def clear_visits():
+    """Remove all visit records from the store."""
+    data = _read_data()
+    if 'visits' in data:
+        data['visits'] = []
+        _write_data(data)
+
+
+def clear_parks():
+    """Remove all parks and visits from the store (complete park reset)."""
+    data = _read_data()
+    data['parks'] = []
+    data['visits'] = []
+    _write_data(data)
+
+
+def clear_all():
+    """Remove all stored data (parks, visits) and recreate empty structure."""
+    _write_data({"parks": [], "visits": []})
 
 
 def export_json(path: str):

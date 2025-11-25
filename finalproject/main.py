@@ -18,7 +18,7 @@ console = Console()
 
 
 def cmd_add_park(args):
-    p = db.add_park(name=args.name, state=args.state)
+    p = db.add_park(name=args.name, state=args.state, notes=getattr(args, 'notes', None))
     console.print(f"Added park: [bold]{p.name}[/]")
 
 
@@ -32,7 +32,13 @@ def cmd_list_parks(args):
         else:
             parks = [p for p in parks if p.id not in visited_ids]
 
+    # Show notes column if requested, or automatically if any park has notes
     show_notes = getattr(args, 'show_notes', False)
+    if not show_notes:
+        try:
+            show_notes = any(bool(p.notes) for p in parks)
+        except Exception:
+            show_notes = False
     if show_notes:
         table = Table("Name", "State", "Lat", "Lon", "Notes")
     else:
@@ -56,7 +62,7 @@ def cmd_add_visit(args):
     if not park:
         console.print(f"Park '{args.park}' not found; create it first.")
         return
-    v = db.add_visit(park_id=park.id, trail=args.trail, start=args.start, end=args.end, party_size=args.party)
+    v = db.add_visit(park_id=park.id, trail=args.trail, start=args.start, end=args.end, party_size=args.party, notes=getattr(args, 'notes', None))
     console.print(f"Added visit: {v.id} to park {park.name}")
 
 
@@ -68,11 +74,16 @@ def cmd_list_visits(args):
             console.print(f"Park '{args.park}' not found.")
             return
     visits = db.list_visits(park_id=park.id if park else None)
-    table = Table("ID", "Park", "Trail", "Start", "End", "Party", "Created")
+    # Include notes column for visits
+    table = Table("ID", "Park", "Trail", "Start", "End", "Party", "Created", "Notes")
     for v in visits:
         park_rec = db.find_park_by_id(v.park_id)
         park_name = park_rec.name if park_rec else "Unknown"
-        table.add_row(v.id, park_name, v.trail or "", v.start or "", v.end or "", str(v.party_size), v.created_at)
+        note = v.notes or ""
+        # truncate long notes to 60 chars
+        if len(note) > 60:
+            note = note[:57] + '...'
+        table.add_row(v.id, park_name, v.trail or "", v.start or "", v.end or "", str(v.party_size), v.created_at, note)
     console.print(table)
 
 
@@ -92,6 +103,35 @@ def cmd_note_park(args):
         return
     db.update_park(park.id, notes=args.note)
     console.print(f"Saved note for {park.name}")
+
+
+def cmd_reset_data(args):
+    """Reset stored data. Default mode clears visits only. Use --parks to clear parks+visits or --all to recreate empty store."""
+    mode = 'visits'
+    if getattr(args, 'parks', False):
+        mode = 'parks'
+    if getattr(args, 'all', False):
+        mode = 'all'
+
+    if not getattr(args, 'yes', False):
+        try:
+            confirm = input(f'Are you sure you want to clear {mode}? This cannot be undone. Type "yes" to confirm: ').strip().lower()
+        except (EOFError, KeyboardInterrupt):
+            console.print('\nCancelled')
+            return
+        if confirm != 'yes':
+            console.print('Cancelled')
+            return
+
+    if mode == 'visits':
+        db.clear_visits()
+        console.print('All visits cleared.')
+    elif mode == 'parks':
+        db.clear_parks()
+        console.print('All parks and visits cleared.')
+    else:
+        db.clear_all()
+        console.print('All data cleared; empty store created.')
 
 
 def cmd_export(args):
@@ -176,6 +216,7 @@ def cmd_menu(args):
         console.print("4) List visits")
         console.print("5) Add visit")
         console.print("6) Launch AI agent")
+        console.print("7) Clear data (visits / parks / all)")
         console.print("0) Exit")
         try:
             choice = input('Select an option: ').strip()
@@ -191,8 +232,9 @@ def cmd_menu(args):
         elif choice == '2':
             name = input('Park name: ').strip()
             state = input('State (optional): ').strip() or None
+            notes = input('Notes (optional): ').strip() or None
             if name:
-                db.add_park(name=name, state=state)
+                db.add_park(name=name, state=state, notes=notes)
                 console.print(f'Added park: {name}')
         elif choice == '3':
             cmd_import_parks(argparse.Namespace(source='data/parks.json'))
@@ -207,11 +249,34 @@ def cmd_menu(args):
                 party_i = int(party) if party else 1
             except ValueError:
                 party_i = 1
+            notes = input('Notes for this visit (optional): ').strip() or None
             if park_name:
-                cmd_add_visit(argparse.Namespace(park=park_name, trail=trail, start=None, end=None, party=party_i))
+                cmd_add_visit(argparse.Namespace(park=park_name, trail=trail, start=None, end=None, party=party_i, notes=notes))
         elif choice == '6':
             console.print('Launching local AI agent (type "exit" to quit)')
             cmd_agent(argparse.Namespace(prompt=None))
+        elif choice == '7':
+            console.print('\nClear data options:')
+            console.print('1) Clear visits')
+            console.print('2) Clear parks and visits')
+            console.print('3) Clear all (recreate empty store)')
+            console.print('0) Cancel')
+            try:
+                sub = input('Choose option: ').strip()
+            except (EOFError, KeyboardInterrupt):
+                console.print('\nCancelled')
+                continue
+            if sub == '0':
+                console.print('Cancelled')
+                continue
+            if sub == '1':
+                cmd_reset_data(argparse.Namespace(visits=True, parks=False, all=False, yes=False))
+            elif sub == '2':
+                cmd_reset_data(argparse.Namespace(visits=False, parks=True, all=False, yes=False))
+            elif sub == '3':
+                cmd_reset_data(argparse.Namespace(visits=False, parks=False, all=True, yes=False))
+            else:
+                console.print('Unknown option; cancelled')
         else:
             console.print('Unknown option')
 
@@ -467,6 +532,7 @@ def build_parser():
     p_add_park = sub.add_parser('add-park')
     p_add_park.add_argument('--name', required=True)
     p_add_park.add_argument('--state', required=False)
+    p_add_park.add_argument('--notes', required=False, help='personal note for this park')
     p_add_park.set_defaults(func=cmd_add_park)
 
     p_list_parks = sub.add_parser('list-parks')
@@ -482,6 +548,7 @@ def build_parser():
     p_add_visit.add_argument('--start', required=False)
     p_add_visit.add_argument('--end', required=False)
     p_add_visit.add_argument('--party', type=int, default=1)
+    p_add_visit.add_argument('--notes', required=False, help='notes for this visit')
     p_add_visit.set_defaults(func=cmd_add_visit)
 
     p_visit_park = sub.add_parser('visit-park')
@@ -515,6 +582,14 @@ def build_parser():
     p_agent.add_argument('--prompt', required=False, help='one-shot prompt for the local AI agent')
     p_agent.add_argument('--use-llm', action='store_true', help='use an external LLM (requires OPENAI_API_KEY in environment)')
     p_agent.set_defaults(func=cmd_agent)
+
+    p_reset = sub.add_parser('reset-data')
+    group = p_reset.add_mutually_exclusive_group()
+    group.add_argument('--visits', action='store_true', help='clear visit records (default)')
+    group.add_argument('--parks', action='store_true', help='clear parks and visits (reset parks)')
+    group.add_argument('--all', action='store_true', help='clear all stored data and recreate empty store')
+    p_reset.add_argument('--yes', action='store_true', help='skip confirmation prompt')
+    p_reset.set_defaults(func=cmd_reset_data)
 
     return parser
 

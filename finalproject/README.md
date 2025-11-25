@@ -83,4 +83,29 @@ python -m finalproject.main list-parks --show-notes
 python -m finalproject.main note-park --park "Yosemite" --note "Great hike at Upper Falls; bring water."
 ```
 
+Reset / clear data
+
+If you want to restart the local dataset, use the `reset-data` command. This is destructive and will remove records from `finalproject/data.json`.
+
+- Clear visits only (default):
+
+```powershell
+python -m finalproject.main reset-data --visits
+```
+
+- Clear parks and visits (removes all parks and visits):
+
+```powershell
+python -m finalproject.main reset-data --parks
+```
+
+- Clear everything and recreate an empty store:
+
+```powershell
+python -m finalproject.main reset-data --all
+```
+
+All commands will prompt for confirmation. To skip the confirmation (for scripted runs), pass `--yes`.
+
+
 
