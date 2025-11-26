@@ -46,7 +46,7 @@ Notes on the `agent` LLM option
 - Example (one-shot LLM-enabled):
 
 ```powershell
-$env:OPENAI_API_KEY = 'sk-xxxx'
+$env:OPENAI_API_KEY = ''
 python -m finalproject.main agent --use-llm --prompt "Find parks in CA and plan a 3-person visit to Yosemite next July"
 ```
 

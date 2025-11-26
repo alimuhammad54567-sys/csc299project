@@ -282,9 +282,12 @@ def cmd_menu(args):
 
 
 def cmd_agent(args):
-    """Local keyword-based AI agent. Safe, offline, and maps prompts to allowed actions.
-
-    Supported actions (keyword matching):
+    """AI agent with two modes:
+    
+    1. Restricted mode (default): Maps prompts to allowed actions (list_parks, import_parks, add_park, add_visit)
+    2. Chat mode (--chat): Free-form conversational agent that answers anything
+    
+    Supported restricted actions:
     - import parks: loads `data/parks.json` into finalproject store
     - list parks: shows parks
     - add park <name> [state]: creates a park
@@ -301,10 +304,10 @@ def cmd_agent(args):
         if not key:
             return None
         try:
-            import openai
+            from openai import OpenAI
         except Exception:
             return None
-        openai.api_key = key
+        client = OpenAI(api_key=key)
         system = (
             "You are a safe assistant for a terminal-based National Park Tracker. "
             "When given a user prompt, output a single JSON object (no surrounding commentary) describing at most one allowed action. "
@@ -315,7 +318,7 @@ def cmd_agent(args):
             "If you cannot map the prompt to a single allowed action, return action \"none\" and provide a short explanation."
         )
         try:
-            resp = openai.ChatCompletion.create(
+            resp = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[{"role": "system", "content": system}, {"role": "user", "content": prompt}],
                 max_tokens=256,
@@ -343,12 +346,12 @@ def cmd_agent(args):
         if not key:
             return ""
         try:
-            import openai
+            from openai import OpenAI
         except Exception:
             return ""
-        openai.api_key = key
+        client = OpenAI(api_key=key)
         try:
-            resp = openai.ChatCompletion.create(
+            resp = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=512,
@@ -363,7 +366,17 @@ def cmd_agent(args):
         t = text.lower().strip()
         if t in ('exit', 'quit'):
             return False
-        # If asked to use an LLM, attempt it first and fall back to rules
+        
+        # Chat mode: free-form conversation with the LLM
+        if args and getattr(args, 'chat', False):
+            response = call_llm_text(text)
+            if response:
+                console.print(f"[cyan]Agent:[/] {response}")
+            else:
+                console.print("[red]Agent: Failed to get response from LLM[/]")
+            return True
+        
+        # Restricted mode: If asked to use an LLM, attempt it first and fall back to rules
         if args and getattr(args, 'use_llm', False):
             intent = call_llm(text)
             if intent is None:
@@ -581,6 +594,7 @@ def build_parser():
     p_agent = sub.add_parser('agent')
     p_agent.add_argument('--prompt', required=False, help='one-shot prompt for the local AI agent')
     p_agent.add_argument('--use-llm', action='store_true', help='use an external LLM (requires OPENAI_API_KEY in environment)')
+    p_agent.add_argument('--chat', action='store_true', help='free-form conversation mode with LLM (answers anything)')
     p_agent.set_defaults(func=cmd_agent)
 
     p_reset = sub.add_parser('reset-data')
