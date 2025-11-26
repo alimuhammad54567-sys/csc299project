@@ -42,20 +42,58 @@ python -m finalproject.main list-visits --park "My Park"
 
 Notes on the `agent` LLM option
 
-- The `agent` still works offline with rule-based parsing. For more natural responses you can enable an external LLM using the `--use-llm` flag. This will attempt to call OpenAI if you set the `OPENAI_API_KEY` environment variable and install the `openai` package.
-- Example (one-shot LLM-enabled):
+The `agent` command has two modes:
 
+1. **Restricted mode** (default): Works offline with rule-based parsing. Safely maps prompts to allowed actions only (list parks, import parks, add park, add visit).
+2. **Chat mode** (`--chat` flag): Free-form conversation with the LLM. Answers any question without action restrictions.
+
+Both modes require setting the `OPENAI_API_KEY` environment variable to use the LLM. If the key is not set, the agent falls back to local rule-based parsing.
+
+### Setting your OpenAI API key
+
+Get your API key from [OpenAI's API keys page](https://platform.openai.com/api-keys), then set it as an environment variable:
+
+**PowerShell:**
 ```powershell
-$env:OPENAI_API_KEY = ''
-python -m finalproject.main agent --use-llm --prompt "Find parks in CA and plan a 3-person visit to Yosemite next July"
+$env:OPENAI_API_KEY = 'your-key-here'
 ```
 
-Security and safety: the LLM integration is intentionally limited — the agent only maps LLM text to a small set of allowed, safe actions (import parks, list parks, add park, add visit). You must provide your own API key and accept any costs from the provider.
+**Command Prompt (cmd):**
+```cmd
+set OPENAI_API_KEY=your-key-here
+```
 
-Important: API key usage and privacy
+**Bash (Linux/Mac):**
+```bash
+export OPENAI_API_KEY='your-key-here'
+```
 
-- You must provide your own API key via the `OPENAI_API_KEY` environment variable. The project will read the key from your environment at runtime and will not store or transmit your key elsewhere from your machine. Do not paste or share your API key in chat or with others.
-- The agent will show the LLM's suggested action and ask you to confirm before executing anything. If the key is not present or the `openai` library is not installed, the agent falls back to the safe, local rule-based parser.
+### Usage examples
+
+**Restricted mode (LLM-enabled, requires confirmation):**
+```powershell
+$env:OPENAI_API_KEY = 'your-key-here'
+python -m finalproject.main agent --use-llm --prompt "add park Yellowstone WY"
+```
+
+**Chat mode (free-form conversation):**
+```powershell
+$env:OPENAI_API_KEY = 'your-key-here'
+python -m finalproject.main agent --chat --prompt "best time to visit yosemite"
+```
+
+**Interactive chat mode:**
+```powershell
+$env:OPENAI_API_KEY = 'your-key-here'
+python -m finalproject.main agent --chat
+# Type your questions; type "exit" or "quit" to leave
+```
+
+### Security and privacy
+
+- **Never commit your API key to git or share it with others.** The code does not store keys—it only reads from the `OPENAI_API_KEY` environment variable at runtime.
+- In restricted mode, the agent shows the suggested action and asks for confirmation before executing. You accept responsibility for any API usage costs.
+- If the API key is not set or the `openai` library is not installed, both modes fall back to safe, offline rule-based parsing.
 
 Examples
 
