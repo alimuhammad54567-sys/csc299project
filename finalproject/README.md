@@ -18,7 +18,7 @@ python -m finalproject.main --help
 
 Purpose
 
-This folder is the clean final-code workspace. It contains a minimal, extendable CLI app with a SQLite backend you can expand with features from task prototypes (GPX import, TUI, sync, etc.).
+This folder is the clean final-code workspace. It contains a minimal, extendable CLI app with a simple JSON-backed store (`finalproject/data.json`) you can expand with features from task prototypes (GPX parsing, TUI, sync, etc.).
 
 Next steps
 - Merge useful code from `tasks1`..`tasks5` into `finalproject/` (GPX parsing, data models, utilities).
@@ -26,6 +26,19 @@ Next steps
 - New commands:
 	- `menu`: interactive terminal menu to run common actions.
 	- `agent`: a local keyword-based AI assistant that can run safe actions like `import parks`, `list parks`, `add park <name>` and `add visit to <park> party N`.
+
+Notes on the `agent` LLM option
+
+- The CLI supports adding personal notes for parks and visits. Use `--notes` when creating a park or visit to attach a short note.
+
+Examples
+
+```powershell
+python -m finalproject.main add-park --name "My Park" --state "CA" --notes "Favorite campsite near the lake"
+python -m finalproject.main visit-park --park "My Park" --date 2026-07-10 --party 3 --notes "Summer trip: bring camera"
+python -m finalproject.main list-parks --show-notes
+python -m finalproject.main list-visits --park "My Park"
+```
 
 Notes on the `agent` LLM option
 
@@ -106,6 +119,10 @@ python -m finalproject.main reset-data --all
 ```
 
 All commands will prompt for confirmation. To skip the confirmation (for scripted runs), pass `--yes`.
+
+Interactive menu note
+
+- The interactive `menu` exposes a "Clear data" option (Clear visits / Clear parks+visits / Clear all) so you can reset the local store without invoking the CLI flags directly. The menu will still ask for confirmation before performing destructive actions.
 
 
 

@@ -639,48 +639,17 @@
       "source_id": null,
       "notes": "warm",
       "created_at": "2025-11-25T20:32:32.507953"
+    },
+    {
+      "id": "2c56aa61-261f-4eec-bbf6-e160e3d41965",
+      "name": "w",
+      "state": "ww",
+      "lat": null,
+      "lon": null,
+      "source_id": null,
+      "notes": "e",
+      "created_at": "2025-11-26T03:01:14.926155"
     }
   ],
-  "visits": [
-    {
-      "id": "7f9ea09f-3faf-419d-bb1c-33d8457a0cea",
-      "park_id": "b715d2cb-e752-4fbf-b116-f6ae5d136e65",
-      "trail": "weew",
-      "start": null,
-      "end": null,
-      "party_size": 1,
-      "notes": null,
-      "created_at": "2025-11-25T18:53:29.778631"
-    },
-    {
-      "id": "f2861ffd-f32b-44a7-8f15-8d54225d0e5d",
-      "park_id": "b715d2cb-e752-4fbf-b116-f6ae5d136e65",
-      "trail": "wew",
-      "start": null,
-      "end": null,
-      "party_size": 2,
-      "notes": null,
-      "created_at": "2025-11-25T18:56:44.244004"
-    },
-    {
-      "id": "14e23aef-8db7-4933-9686-8836cc7824bf",
-      "park_id": "a993735b-b4aa-4cb2-9d58-b91ff02f812f",
-      "trail": "upper row",
-      "start": null,
-      "end": null,
-      "party_size": 1,
-      "notes": "bring water",
-      "created_at": "2025-11-25T20:33:43.206970"
-    },
-    {
-      "id": "5487fa4a-f40d-4d1e-8261-e063d83a0a14",
-      "park_id": "bf13a45a-2bf0-4330-914a-f275a817febd",
-      "trail": null,
-      "start": "2025-01-01",
-      "end": null,
-      "party_size": 2,
-      "notes": "Test visit notes: bring camera and snacks",
-      "created_at": "2025-11-25T20:35:00.222041"
-    }
-  ]
+  "visits": []
 }
